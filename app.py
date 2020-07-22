@@ -2,7 +2,7 @@
 # -- Import section --
 from flask import Flask
 from flask import render_template
-from flask import request, redirect
+from flask import request, redirect, url_for
 from model import get_breakfast_rating
 from datetime import datetime
 
@@ -25,7 +25,7 @@ def results():
         breakfast_rating = get_breakfast_rating(user_breakfast)
         return render_template("breakfast.html", user_breakfast=user_breakfast, user_name=user_name, breakfast_rating=breakfast_rating)
     else:
-        return redirect('/')
+        return redirect(url_for('index'))
 
 @app.route('/secret')
 def secret():
